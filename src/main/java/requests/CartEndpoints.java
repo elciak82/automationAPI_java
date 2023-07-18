@@ -3,13 +3,19 @@ package requests;
 import POJO.AddItemToCartRequest;
 import enums.Endpoints;
 import helpers.BaseEndpoint;
+import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.response.Response;
-import org.junit.runner.Request;
 
 public class CartEndpoints extends BaseEndpoint {
 
     public Response getCart() {
         Response response = sendGetRequest(Endpoints.GET_CART.getEndpoint());
+        response.getBody().prettyPrint();
+        return response;
+    }
+
+    public Response countItemsInCart() {
+        Response response = sendGetRequest(Endpoints.COUNT_ITEMS.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
