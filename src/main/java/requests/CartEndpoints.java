@@ -1,21 +1,20 @@
 package requests;
 
 import POJO.AddItemToCartRequest;
-import enums.Endpoints;
-import helpers.BaseEndpoint;
+import helpers.Endpoints;
 import io.restassured.response.Response;
 
-public class CartEndpoints extends BaseEndpoint {
+public class CartEndpoints extends Endpoints {
 
     public Response getCart() { //with removed items
-        Response response = sendGetRequest(Endpoints.GET_CART.getEndpoint());
+        Response response = sendGetRequest(enums.Endpoints.GET_CART.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
 
 
     public Response clearCart() {
-        Response response = sendPostRequest(Endpoints.CLEAR_CART.getEndpoint());
+        Response response = sendPostRequest(enums.Endpoints.CLEAR_CART.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
@@ -24,7 +23,7 @@ public class CartEndpoints extends BaseEndpoint {
 
         AddItemToCartRequest bodyRequest = new AddItemToCartRequest(quantity, id);
 
-        Response response = sendPostRequest(Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
+        Response response = sendPostRequest(enums.Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
         response.getBody().prettyPrint();
         return response;
 

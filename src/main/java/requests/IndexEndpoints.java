@@ -1,11 +1,9 @@
 package requests;
 
-import POJO.AddItemToCartRequest;
-import enums.Endpoints;
-import helpers.BaseEndpoint;
+import helpers.Endpoints;
 import io.restassured.response.Response;
 
-public class IndexEndpoints extends BaseEndpoint {
+public class IndexEndpoints extends Endpoints {
 
     public Response getAllEndpoints() {
         Response response = sendGetRequest();

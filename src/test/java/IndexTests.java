@@ -5,9 +5,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import requests.IndexEndpoints;
 
-public class ProductTests {
+public class IndexTests {
 
-    IndexEndpoints productEndpoints = new IndexEndpoints();
+    IndexEndpoints indexEndpoints = new IndexEndpoints();
 
     @BeforeTest
     public void before() {
@@ -15,8 +15,8 @@ public class ProductTests {
     }
 
     @Test
-    public void getWholeCart() {
-        productEndpoints.getProducts();
+    public void getAllEndpointsTest() {
+        indexEndpoints.getAllEndpoints();
 
     }
 
