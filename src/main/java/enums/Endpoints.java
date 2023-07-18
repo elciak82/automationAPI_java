@@ -9,6 +9,7 @@ public enum Endpoints {
     GET_ITEM("/cart/item/"),
     COUNT_ITEMS("/cart/items/count");
 
+
     private final String endpoint;
 
 
