@@ -47,4 +47,14 @@ public abstract class BaseEndpoint  {
                 .body(body)
                 .post(endpoint);
     }
+
+    public Response sendDeleteRequest(String endpoint){
+        return given()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD)
+                .baseUri(BASE_URL)
+                .basePath(BASE_PATH)
+                .delete(endpoint);
+    }
 }
