@@ -25,9 +25,7 @@ public class CartEndpoints {
         return response;
     }
 
-    public Response addItemToCart(int quantity, String id) {
-
-        AddItemToCartRequest bodyRequest = new AddItemToCartRequest(quantity, id);
+    public Response addItemToCart(AddItemToCartRequest bodyRequest) {
 
         Response response = loggedCustomer.sendPostRequest(enums.Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
         response.getBody().prettyPrint();
@@ -36,12 +34,22 @@ public class CartEndpoints {
     }
 
     public Response getGuestCartKey() {
+
         Response response = guest.sendGetRequest(enums.Endpoints.GET_CART.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
+
     public Response getGuestCartByKey(Map<String, String> queryParams) { //with removed items
-        Response response = guest.sendGetWithParams(enums.Endpoints.GET_CART.getEndpoint(), queryParams);
+
+        Response response = guest.sendGetRequestWithParams(enums.Endpoints.GET_CART.getEndpoint(), queryParams);
+        response.getBody().prettyPrint();
+        return response;
+    }
+
+    public Response addItemToGuestCart(Map<String, String> queryParams, AddItemToCartRequest bodyRequest) { //with removed items
+
+        Response response = guest.sendPostRequestWithParamsAndBody(enums.Endpoints.GET_CART.getEndpoint(), queryParams, bodyRequest);
         response.getBody().prettyPrint();
         return response;
     }

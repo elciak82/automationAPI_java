@@ -1,3 +1,4 @@
+import POJO.AddItemToCartRequest;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -57,7 +58,9 @@ public class CartTests {
         String id = "142";
         int quantity = 5;
 
-        cartEndpoints.addItemToCart(quantity, id);
+        AddItemToCartRequest requestBody = new AddItemToCartRequest(quantity, id);
+
+        cartEndpoints.addItemToCart(requestBody);
 
     }
 
@@ -66,7 +69,9 @@ public class CartTests {
         String id = "142";
         int quantity = 5;
 
-        cartEndpoints.addItemToCart(quantity, id);
+        AddItemToCartRequest requestBody = new AddItemToCartRequest(quantity, id);
+
+        cartEndpoints.addItemToCart(requestBody);
 
     }
 

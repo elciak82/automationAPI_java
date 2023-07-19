@@ -15,9 +15,15 @@ public class RequestsWithoutAuth extends BaseRequest {
                 .get(endpoint);
     }
 
-    public Response sendGetWithParams(String endpoint, Map<String, String> queryParams){
+    public Response sendGetRequestWithParams(String endpoint, Map<String, String> queryParams){
         return baseRequestWithParams(queryParams)
                 .get(endpoint);
+    }
+
+    public Response sendPostRequestWithParamsAndBody(String endpoint, Map<String, String> queryParams, AddItemToCartRequest body){
+        return baseRequestWithParams(queryParams)
+                .body(body)
+                .post(endpoint);
     }
 
 
