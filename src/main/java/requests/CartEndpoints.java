@@ -1,20 +1,26 @@
 package requests;
 
 import POJO.AddItemToCartRequest;
-import helpers.Endpoints;
+import helpers.requests.RequestsWithAuth;
+import helpers.requests.RequestsWithoutAuth;
 import io.restassured.response.Response;
 
-public class CartEndpoints extends Endpoints {
+import java.util.Map;
+
+public class CartEndpoints {
+
+    private RequestsWithAuth loggedCustomer = new RequestsWithAuth();
+    private RequestsWithoutAuth guest = new RequestsWithoutAuth();
 
     public Response getCart() { //with removed items
-        Response response = sendGetRequest(enums.Endpoints.GET_CART.getEndpoint());
+        Response response = loggedCustomer.sendGetRequest(enums.Endpoints.GET_CART.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
 
 
     public Response clearCart() {
-        Response response = sendPostRequest(enums.Endpoints.CLEAR_CART.getEndpoint());
+        Response response = loggedCustomer.sendPostRequest(enums.Endpoints.CLEAR_CART.getEndpoint());
         response.getBody().prettyPrint();
         return response;
     }
@@ -23,9 +29,20 @@ public class CartEndpoints extends Endpoints {
 
         AddItemToCartRequest bodyRequest = new AddItemToCartRequest(quantity, id);
 
-        Response response = sendPostRequest(enums.Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
+        Response response = loggedCustomer.sendPostRequest(enums.Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
         response.getBody().prettyPrint();
         return response;
 
+    }
+
+    public Response getGuestCartKey() {
+        Response response = guest.sendGetRequest(enums.Endpoints.GET_CART.getEndpoint());
+        response.getBody().prettyPrint();
+        return response;
+    }
+    public Response getGuestCartByKey(Map<String, String> queryParams) { //with removed items
+        Response response = guest.sendGetWithParams(enums.Endpoints.GET_CART.getEndpoint(), queryParams);
+        response.getBody().prettyPrint();
+        return response;
     }
 }

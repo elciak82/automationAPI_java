@@ -1,7 +1,13 @@
+import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import requests.CartEndpoints;
 import requests.ItemInCartEndpoints;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartTests {
 
@@ -10,12 +16,27 @@ public class CartTests {
 
     @BeforeTest
     public void before() {
-//        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     @Test
-    public void getWholeCart() {
+    public void getWholeCartTest() {
         cartEndpoints.getCart();
+
+    }
+
+    @Test
+    public void getGuestCartKeyTest() {
+        cartEndpoints.getGuestCartKey();
+
+    }
+
+    @Test
+    public void getGuestCartByCartKey() {
+        Map<String, String> queryParams = new HashMap<>();
+        queryParams.put("cart_key","c5fd5ee2e5c2acca91ca3a73b2fef950");
+
+        cartEndpoints.getGuestCartByKey(queryParams);
 
     }
 

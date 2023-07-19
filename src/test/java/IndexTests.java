@@ -3,11 +3,11 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import requests.IndexEndpoints;
+import requests.DetailEndpoints;
 
 public class IndexTests {
 
-    IndexEndpoints indexEndpoints = new IndexEndpoints();
+    DetailEndpoints detailEndpoints = new DetailEndpoints();
 
     @BeforeTest
     public void before() {
@@ -16,7 +16,13 @@ public class IndexTests {
 
     @Test
     public void getAllEndpointsTest() {
-        indexEndpoints.getAllEndpoints();
+        detailEndpoints.getEndpointsDetails();
+
+    }
+
+    @Test
+    public void getAStoreDetailsTest() {
+        detailEndpoints.getStoreDetails();
 
     }
 

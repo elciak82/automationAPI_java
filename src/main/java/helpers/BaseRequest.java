@@ -2,6 +2,9 @@ package helpers;
 
 import io.restassured.specification.RequestSpecification;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 
 public abstract class BaseRequest {
@@ -16,10 +19,19 @@ public abstract class BaseRequest {
 
     public RequestSpecification baseRequest(){
         return given()
-                .auth()
-                .preemptive()
-                .basic(LOGIN, PASSWORD)
                 .baseUri(BASE_URL)
                 .basePath(BASE_PATH);
+    }
+
+    public RequestSpecification baseRequestWithAuth(){
+        return baseRequest()
+                .auth()
+                .preemptive()
+                .basic(LOGIN, PASSWORD);
+    }
+
+    public RequestSpecification baseRequestWithParams(Map<String, String> queryParams){
+        return baseRequest()
+                .params(queryParams);
     }
 }
