@@ -1,13 +1,12 @@
 package requests;
 
 import enums.Endpoints;
-import helpers.requests.RequestsWithAuth;
-import helpers.requests.RequestsWithoutAuth;
+import helpers.requests.authentication.GetRequestsForCustomer;
 import io.restassured.response.Response;
 
 public class DetailEndpoints {
 
-    private RequestsWithAuth loggedCustomer = new RequestsWithAuth();
+    private final GetRequestsForCustomer loggedCustomer = new GetRequestsForCustomer();
 
     public Response getEndpointsDetails() {
         Response response = loggedCustomer.sendGetRequest();

@@ -21,7 +21,7 @@ public class IndexTests {
     }
 
     @Test
-    public void getAStoreDetailsTest() {
+    public void getStoreDetailsTest() {
         detailEndpoints.getStoreDetails();
 
     }
