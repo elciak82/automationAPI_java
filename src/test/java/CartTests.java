@@ -19,7 +19,7 @@ public class CartTests {
     @BeforeTest
     public void before() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-    }
+    } //baseTest
 
     @Test
     public void getCustomerCartTest() {

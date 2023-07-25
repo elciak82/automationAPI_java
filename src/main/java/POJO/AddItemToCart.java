@@ -9,7 +9,7 @@ public class AddItemToCart {
     @JsonProperty
     private int quantity;
 
-    public AddItemToCart(Integer quantity, String id){
+    public AddItemToCart(Integer quantity, String id) {
         this.id = id;
         this.quantity = quantity;
     }
