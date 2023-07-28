@@ -1,5 +1,6 @@
 import POJO.AddItemToCart;
 import POJO.AddItemToCartByKey;
+import POJO.ItemData;
 import org.testng.annotations.Test;
 import requests.CartEndpoints;
 import requests.ItemInCartEndpoints;
@@ -7,7 +8,7 @@ import requests.ItemInCartEndpoints;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CartTests {
+public class CartTests extends BaseTest {
 
     private final CartEndpoints cartEndpoints = new CartEndpoints();
     private final ItemInCartEndpoints itemEndpoints = new ItemInCartEndpoints();
@@ -60,7 +61,21 @@ public class CartTests {
         String id = "142";
         int quantity = 5;
 
-        AddItemToCart requestBody = new AddItemToCart(quantity, id);
+        AddItemToCart requestBody = new AddItemToCart(quantity, id, null);
+
+        cartEndpoints.addItemToCart(requestBody);
+
+    }
+
+    @Test
+    public void addItemWithDetailsToCustomerCartTest() {
+        String id = "142";
+        int quantity = 5;
+        String color = "Blue";
+        String size = "XXXL";
+        ItemData itemData = new ItemData(color, size);
+
+        AddItemToCart requestBody = new AddItemToCart(quantity, id, itemData);
 
         cartEndpoints.addItemToCart(requestBody);
 
@@ -81,7 +96,7 @@ public class CartTests {
 
     @Test
     public void removeItemFromCustomerCartTest() {
-        String itemKey = "9de3cb424340e9cbdc2048b2b8c4e2ca";
+        String itemKey = "a8baa56554f96369ab93e4f3bb068c22";
         itemEndpoints.removeItemFromCart(itemKey);
 
     }

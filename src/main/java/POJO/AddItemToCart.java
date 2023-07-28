@@ -8,9 +8,12 @@ public class AddItemToCart {
     private String id;
     @JsonProperty
     private int quantity;
+    @JsonProperty
+    private ItemData item_data;
 
-    public AddItemToCart(Integer quantity, String id) {
+    public AddItemToCart(Integer quantity, String id, ItemData itemData) {
         this.id = id;
         this.quantity = quantity;
+        this.item_data = itemData;
     }
 }

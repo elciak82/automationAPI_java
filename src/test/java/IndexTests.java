@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import requests.DetailEndpoints;
 
-public class IndexTests {
+public class IndexTests extends BaseTest{
 
     DetailEndpoints detailEndpoints = new DetailEndpoints();
 
