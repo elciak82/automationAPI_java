@@ -25,7 +25,7 @@ public class CartEndpoints extends BaseRequest {
 
         Response response = baseRequestWithAuth()
                 .params(queryParams)
-                .get(enums.Endpoints.GET_CART.getEndpoint(), queryParams);
+                .get(enums.Endpoints.GET_CART.getEndpoint());
 
         response.getBody().prettyPrint();
         return response;
@@ -44,7 +44,7 @@ public class CartEndpoints extends BaseRequest {
         Response response = baseRequestWithAuth()
                 .contentType(ContentType.JSON)
                 .body(bodyRequest)
-                .post(enums.Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
+                .post(enums.Endpoints.ADD_ITEM.getEndpoint());
 
         response.getBody().prettyPrint();
         return response;
@@ -63,7 +63,7 @@ public class CartEndpoints extends BaseRequest {
     public Response getGuestCartByKey(Map<String, String> queryParams) { //with removed items
 
         Response response = baseRequest()
-                .get(enums.Endpoints.GET_CART.getEndpoint(), queryParams);
+                .get(enums.Endpoints.GET_CART.getEndpoint());
 
         response.getBody().prettyPrint();
         return response;
@@ -74,7 +74,7 @@ public class CartEndpoints extends BaseRequest {
         Response response = baseRequest()
                 .contentType(ContentType.JSON)
                 .body(bodyRequest)
-                .post(Endpoints.ADD_ITEM.getEndpoint(), bodyRequest);
+                .post(Endpoints.ADD_ITEM.getEndpoint());
 
         response.getBody().prettyPrint();
         return response;

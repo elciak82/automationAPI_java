@@ -1,9 +1,5 @@
 import POJO.AddItemToCart;
 import POJO.AddItemToCartByKey;
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import requests.CartEndpoints;
 import requests.ItemInCartEndpoints;
@@ -32,7 +28,7 @@ public class CartTests {
     @Test
     public void mergeItemsFromGuestCustomersCartTest() { ///nie działa - zwrca pusty
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("cart_key","939ae60fc19660610df6202b2b9d2cc9");
+        queryParams.put("cart_key","9de3cb424340e9cbdc2048b2b8c4e2ca");
 
         cartEndpoints.getCartByKey(queryParams);
 
@@ -41,7 +37,7 @@ public class CartTests {
     @Test
     public void getGuestCartByCartKeyTest() { ///nie działa - zwrca pusty
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("cart_key","939ae60fc19660610df6202b2b9d2cc9");
+        queryParams.put("cart_key","9de3cb424340e9cbdc2048b2b8c4e2ca");
 
         cartEndpoints.getGuestCartByKey(queryParams);
 
@@ -78,14 +74,14 @@ public class CartTests {
 
     @Test
     public void viewItemInCustomerCartTest() {
-        String itemKey = "a8baa56554f96369ab93e4f3bb068c22";
+        String itemKey = "9de3cb424340e9cbdc2048b2b8c4e2ca";
         itemEndpoints.viewItemInCart(itemKey);
 
     }
 
     @Test
     public void removeItemFromCustomerCartTest() {
-        String itemKey = "a8baa56554f96369ab93e4f3bb068c22";
+        String itemKey = "9de3cb424340e9cbdc2048b2b8c4e2ca";
         itemEndpoints.removeItemFromCart(itemKey);
 
     }
